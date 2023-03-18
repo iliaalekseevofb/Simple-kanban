@@ -1,6 +1,7 @@
-import { Box, Textarea, IconButton } from '@chakra-ui/react';
+import { Box, IconButton } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
 import { TaskModel } from '../utils/models';
+import AutoResizeTextArea from './Task/AutoResizeTextArea';
 
 type TaskProps = {
   index: number;
@@ -55,7 +56,7 @@ function Task ({
         }}
         onClick={handleDeleteClick}
       />
-      <Textarea 
+      <AutoResizeTextArea
         value={task.title}
         fontWeight='semibold'
         cursor='inherit'
