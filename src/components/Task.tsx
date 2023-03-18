@@ -5,9 +5,25 @@ import { TaskModel } from '../utils/models';
 type TaskProps = {
   index: number;
   task: TaskModel;
+  onUpdate: (id: TaskModel['id'], updatedTask: TaskModel) => void;
+  onDelete: (id: TaskModel['id']) => void;
 }
 
-function Task ({ index, task }: TaskProps) {
+function Task ({
+  index,
+  task,
+  onUpdate: updateTask,
+  onDelete: deleteTask
+}: TaskProps) {
+  const handleTitleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newTitle = e.target.value;
+    updateTask(task.id, {...task, title: newTitle});
+  }
+
+  const handleDeleteClick = () => {
+    deleteTask(task.id);
+  }
+  
   return (
     <Box
       as='div'
@@ -37,6 +53,7 @@ function Task ({ index, task }: TaskProps) {
         _groupHover={{
           opacity: 1
         }}
+        onClick={handleDeleteClick}
       />
       <Textarea 
         value={task.title}
@@ -44,11 +61,13 @@ function Task ({ index, task }: TaskProps) {
         cursor='inherit'
         border='none'
         resize='none'
+        variant='unstyled'
         focusBorderColor='none'
         color='gray.700'
         minH={70}
         maxH={200}
         p={0}
+        onChange={handleTitleChange}
       />
     </Box>
   )
