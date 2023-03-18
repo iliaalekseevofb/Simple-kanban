@@ -11,7 +11,7 @@ function useColumnTasks(column: ColumnType) {
   const [tasks, setTasks] = useTaskCollection();
 
   const addEmptyTask = useCallback(() => {
-    console.log(`Adding new emty task to ${column} column`);
+    console.log(`Adding new empty task to ${column} column`);
 
     setTasks((allTasks) => {
       const columnTasks = allTasks[column];
@@ -36,8 +36,27 @@ function useColumnTasks(column: ColumnType) {
     })
   }, [column, setTasks])
 
+  const updateTask = useCallback(
+    (id: TaskModel['id'], updatedTask: Omit<Partial<TaskModel>, 'id'>) => {
+      console.log(`Updating task ${id} with ${JSON.stringify(updateTask)}`);
+
+      setTasks((allTasks) => {
+        const columnTasks = allTasks[column];
+
+        return {
+          ...allTasks,
+          [column]: columnTasks.map((task) => {
+            task.id === id ? {...task, ...updateTask} : task;
+          })
+        }
+      })
+    }, [column, setTasks]
+  )
+
   return {
     tasks: tasks[column],
     addEmptyTask
   }
 }
+
+export default useColumnTasks;
