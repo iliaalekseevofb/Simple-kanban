@@ -13,7 +13,7 @@ const ColumnColorScheme: Record<ColumnType, string> = {
 }
 
 function Column({ column }: { column: ColumnType }) {
-  const { tasks, addEmptyTask, updateTask, deleteTask, dropTaskFrom } = useColumnTasks(column);
+  const { tasks, addEmptyTask, updateTask, deleteTask, dropTaskFrom, swapTasks } = useColumnTasks(column);
 
   const {dropRef, isOver} = useColumnDrop(column, dropTaskFrom)
 
@@ -24,6 +24,7 @@ function Column({ column }: { column: ColumnType }) {
       index={index}
       onUpdate={updateTask}
       onDelete={deleteTask}
+      onDropHover={swapTasks}
     />
   ))
 
