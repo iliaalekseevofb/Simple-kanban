@@ -26,6 +26,7 @@ function useTaskDragAndDrop<T extends HTMLElement> ({
     })
   })
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, drop] = useDrop<DragItem, void, unknown>({
     accept: ItemType.TASK,
     hover: (item, monitor) => {
@@ -44,6 +45,7 @@ function useTaskDragAndDrop<T extends HTMLElement> ({
       const isDraggedItemBelowHovered = !isDraggedItemAboveHovered;
 
       // get mouse coordinates
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { x: mouseX, y: mouseY } = monitor.getClientOffset() as XYCoord;
 
       // get hover item rectangle
