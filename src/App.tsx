@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Heading
-        fontSize={{base: '3xl', sm: '4xl', md: '5xl'}}
+        fontSize={{base: '2xl', sm: '3xl', md: '4xl'}}
         fontWeight='bold'
         textAlign='center'
         bgGradient='linear(to-l, #7928CA, #FF0080)'
