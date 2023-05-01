@@ -21,7 +21,7 @@ function App() {
       <DarkModeIconButton
         position='absolute'
         top={0}
-        right={2}
+        right={4}
       />
       <Container
         maxWidth='container.lg'

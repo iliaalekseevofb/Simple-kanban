@@ -41,6 +41,9 @@ function Task ({
       role='group'
       position='relative'
       rounded='lg'
+      overflow='hidden'
+      translateX={0}
+      translateY={0}
       w={200}
       pl={3}
       pr={7}
